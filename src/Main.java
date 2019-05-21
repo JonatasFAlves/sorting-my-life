@@ -1,3 +1,4 @@
+import sorting.cocktail.CocktailSort;
 import sorting.pancake.PancakeSort;
 import sorting.tree.Tree;
 
@@ -29,6 +30,10 @@ public class Main {
             case "pancake":
                 pancakeSort(array);
                 break;
+
+            case "cocktail":
+                cocktailSort(array);
+                break;
         }
 
         long endTime   = System.currentTimeMillis();
@@ -38,11 +43,11 @@ public class Main {
     }
 
     static String solicitarAlgoritmoOrdenacao() {
-        System.out.println("Escolha o algoritmo de ordenação (tree / pancake) :");
+        System.out.println("Escolha o algoritmo de ordenação (tree / pancake / cocktail) :");
         Scanner in = new Scanner(System.in);
         String algoritmoEscolhido = in.nextLine();
 
-        List<String> algoritmosDisponiveis = Arrays.asList("tree", "pancake");
+        List<String> algoritmosDisponiveis = Arrays.asList("tree", "pancake", "cocktail");
 
         if(algoritmosDisponiveis.contains(algoritmoEscolhido))
             return algoritmoEscolhido;
@@ -108,5 +113,20 @@ public class Main {
 
         System.out.println("Sorted Array: ");
         PancakeSort.printArray(arr, n);
+    }
+
+    static void cocktailSort(int[] arr) {
+        CocktailSort ob = new CocktailSort();
+        ob.cocktailSort(arr);
+        System.out.println("Sorted array");
+        printArray(arr);
+    }
+
+    /* Prints the array */
+    static void printArray(int a[]) {
+        int n = a.length;
+        for (int i = 0; i < n; i++)
+            System.out.print(a[i] + " ");
+        System.out.println();
     }
 }
